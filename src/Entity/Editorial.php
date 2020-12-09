@@ -35,4 +35,66 @@ class Editorial
      * @var string|null
      */
     private $direccionPostal;
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNombre(): string
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * @param string $nombre
+     * @return Editorial
+     */
+    public function setNombre(string $nombre): Editorial
+    {
+        $this->nombre = $nombre;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCif(): string
+    {
+        return $this->cif;
+    }
+
+    /**
+     * @param string $cif
+     * @return Editorial
+     */
+    public function setCif(string $cif): Editorial
+    {
+        $this->cif = $cif;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDireccionPostal(): ?string
+    {
+        return $this->direccionPostal;
+    }
+
+    /**
+     * @param string|null $direccionPostal
+     * @return Editorial
+     */
+    public function setDireccionPostal(?string $direccionPostal): Editorial
+    {
+        $this->direccionPostal = $direccionPostal;
+        return $this;
+    }
 }
