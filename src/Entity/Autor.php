@@ -43,6 +43,12 @@ class Autor
     private $esNacional;
 
     /**
+     * @ORM\OneToOne(targetEntity="Autor")
+     * @var Autor|null
+     */
+    private $pseudonimo;
+
+    /**
      * @return int
      */
     public function getId(): int
@@ -119,6 +125,24 @@ class Autor
     public function setEsNacional(bool $esNacional): Autor
     {
         $this->esNacional = $esNacional;
+        return $this;
+    }
+
+    /**
+     * @return Autor|null
+     */
+    public function getPseudonimo(): ?Autor
+    {
+        return $this->pseudonimo;
+    }
+
+    /**
+     * @param Autor|null $pseudonimo
+     * @return Autor
+     */
+    public function setPseudonimo(?Autor $pseudonimo): Autor
+    {
+        $this->pseudonimo = $pseudonimo;
         return $this;
     }
 }
