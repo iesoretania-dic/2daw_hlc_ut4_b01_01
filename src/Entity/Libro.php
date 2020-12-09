@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -31,10 +33,10 @@ class Libro
     private $titulo;
 
     /**
-     * @ORM\Column(type="string")
-     * @var string
+     * @ORM\ManyToMany(targetEntity="Autor")
+     * @var Autor[]|Collection
      */
-    private $autor;
+    private $autores;
 
     /**
      * @ORM\Column(type="integer")
@@ -59,6 +61,11 @@ class Libro
      * @var string
      */
     private $sinopsis;
+
+    public function __construct()
+    {
+        $this->autores = new ArrayCollection();
+    }
 
     /**
      * @return int
@@ -105,20 +112,20 @@ class Libro
     }
 
     /**
-     * @return string
+     * @return Autor[]|Collection
      */
-    public function getAutor(): string
+    public function getAutores()
     {
-        return $this->autor;
+        return $this->autores;
     }
 
     /**
-     * @param string $autor
+     * @param Autor[]|Collection $autores
      * @return Libro
      */
-    public function setAutor(string $autor): Libro
+    public function setAutores($autores)
     {
-        $this->autor = $autor;
+        $this->autores = $autores;
         return $this;
     }
 
