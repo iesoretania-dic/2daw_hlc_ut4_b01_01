@@ -52,4 +52,102 @@ class Socio
      * @var bool
      */
     private $docente;
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNombre(): string
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * @param string $nombre
+     * @return Socio
+     */
+    public function setNombre(string $nombre): Socio
+    {
+        $this->nombre = $nombre;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getApellidos(): string
+    {
+        return $this->apellidos;
+    }
+
+    /**
+     * @param string $apellidos
+     * @return Socio
+     */
+    public function setApellidos(string $apellidos): Socio
+    {
+        $this->apellidos = $apellidos;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDni(): ?string
+    {
+        return $this->dni;
+    }
+
+    /**
+     * @param string|null $dni
+     * @return Socio
+     */
+    public function setDni(?string $dni): Socio
+    {
+        $this->dni = $dni;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEstudiante(): bool
+    {
+        return $this->estudiante;
+    }
+
+    /**
+     * @param bool $estudiante
+     * @return Socio
+     */
+    public function setEstudiante(bool $estudiante): Socio
+    {
+        $this->estudiante = $estudiante;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isDocente(): bool
+    {
+        return $this->docente;
+    }
+
+    /**
+     * @param bool $docente
+     * @return Socio
+     */
+    public function setDocente(bool $docente): Socio
+    {
+        $this->docente = $docente;
+        return $this;
+    }
 }
