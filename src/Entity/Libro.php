@@ -22,6 +22,12 @@ class Libro
      * @ORM\Column(type="string")
      * @var string
      */
+    private $editorial;
+
+    /**
+     * @ORM\Column(type="string")
+     * @var string
+     */
     private $titulo;
 
     /**
@@ -60,6 +66,24 @@ class Libro
     public function getId(): int
     {
         return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEditorial(): string
+    {
+        return $this->editorial;
+    }
+
+    /**
+     * @param string $editorial
+     * @return Libro
+     */
+    public function setEditorial(string $editorial): Libro
+    {
+        $this->editorial = $editorial;
+        return $this;
     }
 
     /**
