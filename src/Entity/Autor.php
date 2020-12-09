@@ -41,4 +41,84 @@ class Autor
      * @var bool
      */
     private $esNacional;
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNombre(): string
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * @param string $nombre
+     * @return Autor
+     */
+    public function setNombre(string $nombre): Autor
+    {
+        $this->nombre = $nombre;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getApellidos(): string
+    {
+        return $this->apellidos;
+    }
+
+    /**
+     * @param string $apellidos
+     * @return Autor
+     */
+    public function setApellidos(string $apellidos): Autor
+    {
+        $this->apellidos = $apellidos;
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getFechaNacimiento(): ?\DateTime
+    {
+        return $this->fechaNacimiento;
+    }
+
+    /**
+     * @param \DateTime|null $fechaNacimiento
+     * @return Autor
+     */
+    public function setFechaNacimiento(?\DateTime $fechaNacimiento): Autor
+    {
+        $this->fechaNacimiento = $fechaNacimiento;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEsNacional(): bool
+    {
+        return $this->esNacional;
+    }
+
+    /**
+     * @param bool $esNacional
+     * @return Autor
+     */
+    public function setEsNacional(bool $esNacional): Autor
+    {
+        $this->esNacional = $esNacional;
+        return $this;
+    }
 }
