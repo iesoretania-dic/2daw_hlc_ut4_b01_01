@@ -21,8 +21,9 @@ class Libro
     private $id;
 
     /**
-     * @ORM\Column(type="string")
-     * @var string
+     * @ORM\ManyToOne(targetEntity="Editorial")
+     * @ORM\JoinColumn(nullable=false)
+     * @var Editorial
      */
     private $editorial;
 
@@ -76,18 +77,18 @@ class Libro
     }
 
     /**
-     * @return string
+     * @return Editorial
      */
-    public function getEditorial(): string
+    public function getEditorial(): Editorial
     {
         return $this->editorial;
     }
 
     /**
-     * @param string $editorial
+     * @param Editorial $editorial
      * @return Libro
      */
-    public function setEditorial(string $editorial): Libro
+    public function setEditorial(Editorial $editorial): Libro
     {
         $this->editorial = $editorial;
         return $this;
