@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -35,6 +37,17 @@ class Editorial
      * @var string|null
      */
     private $direccionPostal;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Libro", mappedBy="editorial")
+     * @var Libro[]|Collection
+     */
+    private $libros;
+
+    public function __construct()
+    {
+        $this->libros = new ArrayCollection();
+    }
 
     /**
      * @return int

@@ -21,7 +21,7 @@ class Libro
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Editorial")
+     * @ORM\ManyToOne(targetEntity="Editorial", inversedBy="libros")
      * @ORM\JoinColumn(nullable=false)
      * @var Editorial
      */
