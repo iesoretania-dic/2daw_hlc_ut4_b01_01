@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -52,6 +53,12 @@ class Socio
      * @var bool
      */
     private $docente;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Libro", mappedBy="socio")
+     * @var Libro[]|Collection
+     */
+    private $libros;
 
     /**
      * @return int
@@ -148,6 +155,24 @@ class Socio
     public function setDocente(bool $docente): Socio
     {
         $this->docente = $docente;
+        return $this;
+    }
+
+    /**
+     * @return Libro[]|Collection
+     */
+    public function getLibros()
+    {
+        return $this->libros;
+    }
+
+    /**
+     * @param Libro[]|Collection $libros
+     * @return Socio
+     */
+    public function setLibros($libros)
+    {
+        $this->libros = $libros;
         return $this;
     }
 }

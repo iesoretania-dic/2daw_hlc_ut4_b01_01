@@ -34,7 +34,7 @@ class Libro
     private $titulo;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Autor")
+     * @ORM\ManyToMany(targetEntity="Autor", inversedBy="libros",cascade={"persist"})
      * @var Autor[]|Collection
      */
     private $autores;
@@ -62,6 +62,12 @@ class Libro
      * @var string
      */
     private $sinopsis;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Socio", inversedBy="libros")
+     * @var Socio|null
+     */
+    private $socio;
 
     public function __construct()
     {
@@ -199,6 +205,24 @@ class Libro
     public function setSinopsis(string $sinopsis): Libro
     {
         $this->sinopsis = $sinopsis;
+        return $this;
+    }
+
+    /**
+     * @return Socio|null
+     */
+    public function getSocio(): ?Socio
+    {
+        return $this->socio;
+    }
+
+    /**
+     * @param Socio|null $socio
+     * @return Libro
+     */
+    public function setSocio(?Socio $socio): Libro
+    {
+        $this->socio = $socio;
         return $this;
     }
 }
