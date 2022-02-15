@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Listado de autores
+{% endblock %}
+
+{% block body %}
+    <h1>Listado de autores</h1>
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Fecha de nacimiento</th>
+                <th>Pseudónimo</th>
+                <th>¿Es nacional?</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for autor in autores %}
+                <tr>
+                    <td>{{ autor }}</td>
+                    <td>{{ autor.fechaNacimiento ? autor.fechaNacimiento | date('d/m/Y') : '---'}}</td>
+                    <td>{{ autor.pseudonimo ?: '---' }}</td>
+                    <td>{{ autor.esNacional ? 'Sí' : 'No' }}</td>
+                    <td>
+                        <a href="{{ path('autor_modificar', {'id': autor.id}) }}" title="Modificar autor"><i class="fa fa-pencil-alt"></i></a>
+                        <a href="{{ path('autor_eliminar', {'id': autor.id}) }}" title="Eliminar autor"><i class="fa fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">No hay ningún autor registrado</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('autor_nuevo') }}" class="btn btn-success"><i class="fa fa-plus"></i> Crear nuevo autor</a>
+{% endblock %}
+
+

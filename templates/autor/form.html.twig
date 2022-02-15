@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modificar autor{% endblock %}
+
+{% block body %}
+    {% if autor.id %}
+        <h1>Modificando a {{ autor }}</h1>
+    {% else %}
+        <h1>Nuevo autor</h1>
+    {% endif %}
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit" class="btn btn-success">
+        {% if autor.id %}
+            <i class="fa fa-check"></i> Guardar cambios
+        {% else %}
+            <i class="fa fa-plus"></i> Crear nuevo autor
+        {% endif %}
+    </button>
+    <a href="{{ path('autor_listar') }}" class="btn btn-info"><i class="fa fa-arrow-left"></i> Volver al listado</a>
+    {{ form_end(form) }}
+
+{% endblock %}

@@ -2,12 +2,14 @@
 
 namespace App\Entity;
 
+use App\Repository\AutorRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=AutorRepository::class)
  * @ORM\Table(name="autor")
  */
 class Autor
@@ -22,6 +24,8 @@ class Autor
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\NotBlank()
+     * @Assert\Length(min=3, minMessage="Es demasiado corto")
      * @var string
      */
     private $nombre;
@@ -34,6 +38,8 @@ class Autor
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     * @Assert\GreaterThan("1950/01/01", message="Debe ser en el año 1950 o después")
+     * @Assert\LessThanOrEqual("today", message="No puede ser posterior a hoy")
      * @var \DateTime
      */
     private $fechaNacimiento;
@@ -60,10 +66,16 @@ class Autor
         $this->libros = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->nombre . ' ' . $this->apellidos;
+    }
+
+
     /**
-     * @return int
+     * @return ?int
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -71,16 +83,16 @@ class Autor
     /**
      * @return string
      */
-    public function getNombre(): string
+    public function getNombre(): ?string
     {
         return $this->nombre;
     }
 
     /**
-     * @param string $nombre
+     * @param ?string $nombre
      * @return Autor
      */
-    public function setNombre(string $nombre): Autor
+    public function setNombre(?string $nombre): Autor
     {
         $this->nombre = $nombre;
         return $this;
@@ -89,7 +101,7 @@ class Autor
     /**
      * @return string
      */
-    public function getApellidos(): string
+    public function getApellidos(): ?string
     {
         return $this->apellidos;
     }
@@ -98,7 +110,7 @@ class Autor
      * @param string $apellidos
      * @return Autor
      */
-    public function setApellidos(string $apellidos): Autor
+    public function setApellidos(?string $apellidos): Autor
     {
         $this->apellidos = $apellidos;
         return $this;
@@ -123,9 +135,9 @@ class Autor
     }
 
     /**
-     * @return bool
+     * @return ?bool
      */
-    public function isEsNacional(): bool
+    public function isEsNacional(): ?bool
     {
         return $this->esNacional;
     }
@@ -134,7 +146,7 @@ class Autor
      * @param bool $esNacional
      * @return Autor
      */
-    public function setEsNacional(bool $esNacional): Autor
+    public function setEsNacional(?bool $esNacional): Autor
     {
         $this->esNacional = $esNacional;
         return $this;
